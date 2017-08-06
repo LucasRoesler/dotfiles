@@ -5,73 +5,83 @@ xcode-select --install
 echo "General settings"
 sudo chflags hidden /Applications/maps.app
 sudo chflags hidden /Applications/game\ center.app
-sudo chflags hidden /Applications/photo \booth.app
+sudo chflags hidden /Applications/photo\ booth.app
 
-printf "System - Reveal IP address, hostname, OS version, etc. when clicking the login window clock\n"
+echo "System - Reveal IP address, hostname, OS version, etc. when clicking the login window clock\n"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-printf "System - Require password immediately after sleep or screen saver begins\n"
-sudo defaults write com.apple.screensaver askForPassword -int 1
-sudo defaults write com.apple.screensaver askForPasswordDelay -int 0
+echo "System - Require password immediately after sleep or screen saver begins\n"
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
 
+echo "System - Avoid creating .DS_Store files on network volumes\n"
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-printf "System - Avoid creating .DS_Store files on network volumes\n"
-sudo defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+echo "Keyboard - Turn off keyboard illumination when computer is not used for 5 minutes\n"
+defaults write com.apple.BezelServices kDimTime -int 300
 
-printf "Keyboard - Turn off keyboard illumination when computer is not used for 5 minutes\n"
-sudo defaults write com.apple.BezelServices kDimTime -int 300
+echo "Bluetooth - Increase sound quality for headphones/headsets\n"
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
-printf "Bluetooth - Increase sound quality for headphones/headsets\n"
-sudo defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+echo "Finder - Default location is HOME"
+defaults write com.apple.finder NewWindowTarget -string "PfLo"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
-printf "Finder - Show the $HOME/Library folder\n"
+echo "Finder - Show the $HOME/Library folder\n"
 sudo chflags nohidden $HOME/Library
 
-printf "Finder - Show hidden files\n"
-sudo defaults write com.apple.finder AppleShowAllFiles -bool true
+echo "Finder - Show hidden files\n"
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
-printf "Finder - Show filename extensions\n"
-sudo defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+echo "Finder - Show filename extensions\n"
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-printf "Finder - Disable the warning when changing a file extension\n"
-sudo defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
-
-printf "Finder - Show path bar\n"
-sudo defaults write com.apple.finder ShowPathbar -bool true
-
-printf "Finder - Show status bar\n"
-sudo defaults write com.apple.finder ShowStatusBar -bool true
-
-printf "Finder - Display full POSIX path as window title\n"
-sudo defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
-
-printf "Finder - Use list view in all Finder windows\n"
-sudo defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+echo "Finder - Disable the warning when changing a file extension\n"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 
-printf "Printer - Expand print panel by default\n"
-sudo defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+echo "Finder - Show path bar\n"
+defaults write com.apple.finder ShowPathbar -bool true
+
+echo "Finder - Show status bar\n"
+defaults write com.apple.finder ShowStatusBar -bool true
+
+echo "Finder - Display full POSIX path as window title\n"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+echo "Finder - Use list view in all Finder windows\n"
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+
+echo "Printer - Expand print panel by default\n"
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 echo "Check for software updates daily, not just once per week"
-sudo defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 echo "Disable Photos.app from starting everytime a device is plugged in"
-sudo defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 echo "Disable smart quotes as they’re annoying when typing code"
-sudo defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 echo "Disable smart dashes as they’re annoying when typing code"
-sudo defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 
-# Show all processes in Activity Monitor
-sudo defaults write com.apple.ActivityMonitor ShowCategory -int 0
+echo "Enabled tab in modal dialogs (default: 0)"
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-# Sort Activity Monitor results by CPU usage
-sudo defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-sudo defaults write com.apple.ActivityMonitor SortDirection -int 0
+echo "Show all processes in Activity Monitor"
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+echo "Sort Activity Monitor results by CPU usage"
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+echo "Stop launching itunes via media keys"
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
 
 echo "Installing Homebrew"
 ruby -e "$(curl --location --fail --silent --show-error https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -101,6 +111,9 @@ brew install hugo
 brew install ssh-copy-id
 brew install golang
 brew install ruby
+brew install go-delve/delve/delve
+brew install cmake
+brew install rust
 
 echo "Cask installing apps"
 brew cask install iterm2
@@ -110,6 +123,7 @@ brew cask install mattr-slate
 brew cask install caskroom/versions/google-chrome-beta
 brew cask install virtualbox
 brew cask install sublime-text
+brew cask install whatsapp
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

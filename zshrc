@@ -75,3 +75,7 @@ source $HOME/Code/octoeb/completion.sh
 
 # Miniconda install
 export PATH="$PATH:$HOME/miniconda3/bin"
+
+# Golang install
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
