@@ -124,6 +124,7 @@ brew cask install caskroom/versions/google-chrome-beta
 brew cask install virtualbox
 brew cask install sublime-text
 brew cask install whatsapp
+brew cask install slack
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -150,5 +151,30 @@ ln -sf $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Supp
 echo "Setup code folder"
 mkdir $HOME/Code
 
+cd $HOME/Code
+git clone https://github.com/LucasRoesler/dotvim.git
+ln -s $(pwd)/dotvim $HOME/.vim
+
 echo "Installing Inconsolata font"
 curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts/Inconsolata.otf
+
+echo "Setup dlite and docker"
+mkdir $HOME/.bin
+curl -sfSL -o $HOME/.bin/dlite https://github.com/nlf/dlite/releases/download/2.0.0-beta9/dlite
+chmod +x $HOME/.bin/dlite
+
+echo "Install Tomighty Pomodoro app"
+curl -sfSL -o $HOME/Downloads/Tomighty.dmg https://github.com/tomighty/tomighty-osx/releases/download/1.2/Tomighty-1.2.dmg
+echo "Please finish the install of Tomight manually"
+
+
+echo "Don't forget these manual tweaks:"
+echo "\t- set the Caps lock to Esc"
+echo "\t- resize the dock"
+echo "\t- set the top-left hot corner to sleep"
+echo "\t- configure Slate to start at login"
+echo "\t- update KeepingYouAwake to start at login"
+echo "\t- run \"dlite init\""
+echo "\t- create an ssh key and add it to github"
+echo "\t- add the ssh key to unlock at login"
+echo "\t- import default iterm profile from json"
