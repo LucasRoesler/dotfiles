@@ -107,6 +107,7 @@ brew install git-open
 brew install git-extras
 brew install zsh
 brew install docker
+brew install docker-machine-driver-xhyve
 brew install hugo
 brew install ssh-copy-id
 brew install golang
@@ -114,6 +115,7 @@ brew install ruby
 brew install go-delve/delve/delve
 brew install cmake
 brew install rust
+brew install enchant
 
 echo "Cask installing apps"
 brew cask install iterm2
@@ -125,6 +127,7 @@ brew cask install virtualbox
 brew cask install sublime-text
 brew cask install whatsapp
 brew cask install slack
+brew cask install dash
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -150,6 +153,7 @@ ln -sf $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Supp
 
 echo "Setup code folder"
 mkdir $HOME/Code
+mkdir $HOME/Code/go
 
 cd $HOME/Code
 git clone https://github.com/LucasRoesler/dotvim.git
@@ -162,6 +166,16 @@ echo "Setup dlite and docker"
 mkdir $HOME/.bin
 curl -sfSL -o $HOME/.bin/dlite https://github.com/nlf/dlite/releases/download/2.0.0-beta9/dlite
 chmod +x $HOME/.bin/dlite
+
+
+echo "Install go dev envinroment packages"
+export GOPATH=$Home/Code/go
+export PATH=$PATH:$GOPATH/bin
+go get -u github.com/nsf/gocode
+go get -u golang.org/x/tools/cmd/guru
+go get -u golang.org/x/tools/cmd/goimports
+go get -u golang.org/x/tools/cmd/gorename
+go get -u github.com/golang/lint/golint
 
 echo "Install Tomighty Pomodoro app"
 curl -sfSL -o $HOME/Downloads/Tomighty.dmg https://github.com/tomighty/tomighty-osx/releases/download/1.2/Tomighty-1.2.dmg

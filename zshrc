@@ -61,6 +61,16 @@ then
   source .macdocker
 fi
 
+if [ -e .kubectrl-completion ]
+then
+  source $HOME/.kubectrl-completion
+fi
+
+if [ -e .minikube-completion ]
+then
+  source $HOME/.minikube-completion
+fi
+
 # virtualenvwrapper
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]
 then
