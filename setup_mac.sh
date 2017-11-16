@@ -116,12 +116,15 @@ brew install go-delve/delve/delve
 brew install cmake
 brew install rust
 brew install enchant
+brew install mkdocs
+brew instal fzf
+brew install the_silver_searcher
 
 echo "Cask installing apps"
+brew cask install spectacle
 brew cask install iterm2
 brew cask install keybase
 brew cask install keepingyouawake
-brew cask install mattr-slate
 brew cask install caskroom/versions/google-chrome-beta
 brew cask install virtualbox
 brew cask install sublime-text
@@ -141,6 +144,7 @@ gem install mdless
 
 echo "Setup dotfiles"
 ln -sf $(pwd)/aliases $HOME/.aliases
+ln -sf $(pwd)/functions.sh $HOME/.functions
 ln -sf $(pwd)/mac $HOME/.mac
 ln -sf $(pwd)/slate $HOME/.slate
 ln -sf $(pwd)/bashrc $HOME/.bashrc

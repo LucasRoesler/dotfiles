@@ -1,4 +1,11 @@
 autoload -U +X bashcompinit && bashcompinit
+export LANG=en
+
+# Returns whether the given command is executable or aliased.
+_has() {
+  return $( whence $1 >/dev/null )
+}
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -8,10 +15,6 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="lucas"
 ZSH_THEME="robbyrussell"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -42,31 +45,36 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras colored-man python pip fabric brew docker-compose)
+plugins=(git git-extras colored-man python pip pyenv brew wd docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #
-if [ -e .aliases ]
+if [ -e $HOME/.aliases ]
 then
 	source $HOME/.aliases
+fi
+
+if [ -e $HOME/.functions ]
+then
+    source $HOME/.functions
 fi
 
 export PATH=/usr/local/bin:$PATH:$HOME/.bin:$HOME/.config/yarn/global/node_modules/.bin
 
 # Docker
-if [ -e .macdocker ]
+if [ -e $HOME/.macdocker ]
 then
   source .macdocker
 fi
 
-if [ -e .kubectrl-completion ]
+if [ -e $HOME/.kubectrl-completion ]
 then
   source $HOME/.kubectrl-completion
 fi
 
-if [ -e .minikube-completion ]
+if [ -e $HOME/.minikube-completion ]
 then
   source $HOME/.minikube-completion
 fi
@@ -83,10 +91,35 @@ fi
 # Homebrew
 export HOMEBREW_GITHUB_API_TOKEN=433dbae9bdcb46a3682d395c9fc80b7aac9cb183
 
+if [ -e /usr/local/opt/fzf/shell/completion.zsh ]; then
+  source /usr/local/opt/fzf/shell/key-bindings.zsh
+  source /usr/local/opt/fzf/shell/completion.zsh
+fi
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_DEFAULT_OPTS='
+  --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
+  --color info:108,prompt:109,spinner:108,pointer:168,marker:168
+  '
+fi
+
 # octoeb tab completion
 if [ -e $HOME/Code/octoeb/completion.sh ]
 then
 	source $HOME/Code/octoeb/completion.sh
+fi
+
+
+if [ -e $HOME/._bash_complete_devlab.sh ]; then
+    source $HOME/._bash_complete_devlab.sh
+fi
+
+if [[ -e $HOME/.helm-completion ]]; then
+    source $HOME/.helm-completion
 fi
 
 # Miniconda install

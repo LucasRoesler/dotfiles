@@ -10,12 +10,12 @@
 		"internet",
 		"Django",
 		"serializer",
-		"Hefeweizen"
+		"Hefeweizen",
+		"kubernetes"
 	],
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"font_face": "Inconsolata",
-	"font_size": 11,
 	"highlight_line": true,
 	"ignored_packages":
 	[

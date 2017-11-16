@@ -2,10 +2,11 @@
 [core]
 # Please adapt and uncomment the following lines:
     user = Lucas Roesler
-    email = lucas@enderlabs.com
+    email = roesler.lucas@gmail.com 
+    editor = vim
 [user]
     name = Lucas Roesler
-    email = lucas@enderlabs.com
+	email = roesler.lucas@gmail.com
 [push]
     default = simple
 [alias]

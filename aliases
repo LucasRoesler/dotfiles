@@ -15,3 +15,5 @@ alias psqlstart='sudo /etc/init.d/postgresql start'
 alias psqlstop='sudo /etc/init.d/postgresql stop'
 # Docker helpers
 alias dc='docker-compose'
+alias localdm='eval $(docker-machine env --unset)'
+alias dshel='shell_into_docker'
