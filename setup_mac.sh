@@ -91,8 +91,9 @@ echo "Brew installing apps"
 brew install automake
 brew install autoconf
 brew install awscli
+brew install bash-completion
+brew install gnutils
 brew install wget
-brew install neovim
 brew install vim
 brew install git
 brew install node
@@ -103,6 +104,7 @@ brew install curl
 brew install libevent
 brew install openssl
 brew install readline
+brew install git
 brew install git-open
 brew install git-extras
 brew install zsh
@@ -111,6 +113,7 @@ brew install docker-machine-driver-xhyve
 brew install hugo
 brew install ssh-copy-id
 brew install golang
+brew install dep
 brew install ruby
 brew install go-delve/delve/delve
 brew install cmake
@@ -119,6 +122,11 @@ brew install enchant
 brew install mkdocs
 brew instal fzf
 brew install the_silver_searcher
+brew install jq
+brew install macvim
+brew install xhyve
+brew install kubernetes-cli
+brew install kubernetes-helm
 
 echo "Cask installing apps"
 brew cask install spectacle
@@ -130,7 +138,9 @@ brew cask install virtualbox
 brew cask install sublime-text
 brew cask install whatsapp
 brew cask install slack
-brew cask install dash
+brew cask install gpg-suite
+brew cask install minikube
+brew cask install postico
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
