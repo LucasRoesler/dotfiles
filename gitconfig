@@ -58,6 +58,7 @@
 	required = true
 [commit]
     template = ~/.gitmessage
+	gpgsign = true
 [rebase]
 	autosquash = true
 [diff]
