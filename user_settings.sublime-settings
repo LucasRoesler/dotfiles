@@ -13,6 +13,7 @@
 		"Hefeweizen",
 		"kubernetes"
 	],
+	"animation_enabled": false,
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
 	"font_face": "Inconsolata",
@@ -29,7 +30,6 @@
 	],
 	"rulers":
 	[
-		72,
 		80,
 		95
 	],

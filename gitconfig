@@ -122,3 +122,5 @@
   selected = normal
   separator = red bold
   linenumber = normal
+[gpg]
+	program = gpg2

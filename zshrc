@@ -6,6 +6,8 @@ _has() {
   return $( whence $1 >/dev/null )
 }
 
+export GPG_TTY=$(tty)
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 

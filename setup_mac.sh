@@ -176,11 +176,9 @@ ln -s $(pwd)/dotvim $HOME/.vim
 echo "Installing Inconsolata font"
 curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts/Inconsolata.otf
 
-echo "Setup dlite and docker"
+echo "Setup custom bins"
 mkdir $HOME/.bin
-curl -sfSL -o $HOME/.bin/dlite https://github.com/nlf/dlite/releases/download/2.0.0-beta9/dlite
-chmod +x $HOME/.bin/dlite
-
+ln -sf $(pwd)/bin/git-exclude $HOME/.bin/git-exclude
 
 echo "Install go dev envinroment packages"
 export GOPATH=$Home/Code/go

@@ -21,12 +21,15 @@
 		"Package Control",
 		"Pretty JSON",
 		"Python 3",
+		"PyYapf Python Formatter",
 		"requirementstxt",
 		"SideBarEnhancements",
 		"SqlBeautifier",
 		"SublimeLinter",
+		"SublimeLinter-contrib-gometalinter",
 		"SublimeLinter-xmllint",
 		"TOML",
+		"TypeScript Syntax",
 		"Wrap Plus"
 	]
 }
