@@ -15,7 +15,7 @@
 	],
 	"animation_enabled": false,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
 	"font_face": "Inconsolata",
 	"highlight_line": true,
 	"ignored_packages":
@@ -36,7 +36,7 @@
 	"shift_tab_unindent": true,
 	"show_encoding": true,
 	"show_full_path": true,
-	"theme": "Adaptive.sublime-theme",
+	"theme": "Seti.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true
