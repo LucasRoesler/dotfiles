@@ -124,9 +124,21 @@ if [[ -e $HOME/.helm-completion ]]; then
     source $HOME/.helm-completion
 fi
 
+if [ -e $HOME/._minikube_completion.sh ]; then
+    source $HOME/._minikube_completion.sh
+fi
+
+if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
+
+
 # Miniconda install
 export PATH="$PATH:$HOME/miniconda3/bin"
 
 # Golang install
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

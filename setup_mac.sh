@@ -152,6 +152,9 @@ bash ~/miniconda.sh -b -p $HOME/miniconda3
 echo "Install gems"
 gem install mdless
 
+echo "Install node globals"
+npm install -g tldr
+
 echo "Setup dotfiles"
 ln -sf $(pwd)/aliases $HOME/.aliases
 ln -sf $(pwd)/functions.sh $HOME/.functions
@@ -179,6 +182,9 @@ curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts
 echo "Setup custom bins"
 mkdir $HOME/.bin
 ln -sf $(pwd)/bin/git-exclude $HOME/.bin/git-exclude
+
+wget https://dl.pstmn.io/download/latest/osx -O ~/Downloads/postman_latest.zip
+tar xf ~/Downloads/postman_latest.zip -C /Applications
 
 echo "Install go dev envinroment packages"
 export GOPATH=$Home/Code/go

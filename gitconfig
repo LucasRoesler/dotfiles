@@ -124,3 +124,4 @@
   linenumber = normal
 [gpg]
 	program = gpg2
+[url "ssh://git@github.com/"]
