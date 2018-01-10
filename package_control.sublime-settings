@@ -29,6 +29,7 @@
 		"SqlBeautifier",
 		"SublimeLinter",
 		"SublimeLinter-contrib-gometalinter",
+		"SublimeLinter-shellcheck",
 		"SublimeLinter-xmllint",
 		"TOML",
 		"TypeScript Syntax",

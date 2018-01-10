@@ -123,10 +123,12 @@ brew install mkdocs
 brew instal fzf
 brew install the_silver_searcher
 brew install jq
-brew install macvim
+brew install tree
 brew install xhyve
 brew install kubernetes-cli
 brew install kubernetes-helm
+brew install kubectx --with-short-names
+brew install protobuf
 
 echo "Cask installing apps"
 brew cask install spectacle
@@ -194,6 +196,7 @@ go get -u golang.org/x/tools/cmd/guru
 go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/gorename
 go get -u github.com/golang/lint/golint
+go get -u github.com/jessfraz/weather
 
 echo "Install Tomighty Pomodoro app"
 curl -sfSL -o $HOME/Downloads/Tomighty.dmg https://github.com/tomighty/tomighty-osx/releases/download/1.2/Tomighty-1.2.dmg
