@@ -53,32 +53,23 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #
-if [ -e $HOME/.aliases ]
+if [ -e $HOME/.config/lucas/aliases.sh ]
 then
-	source $HOME/.aliases
+	source $HOME/.config/lucas/aliases.sh
 fi
 
-if [ -e $HOME/.functions ]
+if [ -e $HOME/.config/lucas/functions.sh ]
 then
-    source $HOME/.functions
+    source $HOME/.config/lucas/functions.sh
 fi
 
-export PATH=/usr/local/bin:$PATH:$HOME/.bin:$HOME/.config/yarn/global/node_modules/.bin
-
-# Docker
-if [ -e $HOME/.macdocker ]
+if [ -e $HOME/.config/lucas/kubernetes.sh ]
 then
-  source .macdocker
+    source $HOME/.config/lucas/kubernetes.sh
 fi
 
-if [ -e $HOME/.kubectrl-completion ]
-then
-  source $HOME/.kubectrl-completion
-fi
-
-if [ -e $HOME/.minikube-completion ]
-then
-  source $HOME/.minikube-completion
+if [ -e $HOME/.config/lucas/devlab-completion.sh ]; then
+    source $HOME/.config/lucas/devlab-completion.sh
 fi
 
 # virtualenvwrapper
@@ -109,30 +100,14 @@ if _has fzf && _has ag; then
   '
 fi
 
-# octoeb tab completion
-if [ -e $HOME/Code/octoeb/completion.sh ]
-then
-	source $HOME/Code/octoeb/completion.sh
-fi
-
-
-if [ -e $HOME/._bash_complete_devlab.sh ]; then
-    source $HOME/._bash_complete_devlab.sh
-fi
-
-if [[ -e $HOME/.helm-completion ]]; then
-    source $HOME/.helm-completion
-fi
-
-if [ -e $HOME/._minikube_completion.sh ]; then
-    source $HOME/._minikube_completion.sh
-fi
 
 if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
     source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.bin:$PATH
 
 # Miniconda install
 export PATH="$PATH:$HOME/miniconda3/bin"

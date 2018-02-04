@@ -158,10 +158,10 @@ echo "Install node globals"
 npm install -g tldr
 
 echo "Setup dotfiles"
-ln -sf $(pwd)/aliases $HOME/.aliases
-ln -sf $(pwd)/functions.sh $HOME/.functions
-ln -sf $(pwd)/mac $HOME/.mac
-ln -sf $(pwd)/slate $HOME/.slate
+mkdir -p $HOME/.config/lucas
+ln -sf $(pwd)/aliases $HOME/.config/lucas/aliases.sh
+ln -sf $(pwd)/functions.sh $HOME/.config/lucas/functions.sh
+ln -sf $(pwd)/mac $HOME/.config/lucas/mac.sh
 ln -sf $(pwd)/bashrc $HOME/.bashrc
 ln -sf $(pwd)/zshrc $HOME/.zshrc
 ln -sf $(pwd)/gitconfig $HOME/.gitconfig
@@ -171,11 +171,9 @@ ln -sf $(pwd)/user_settings.sublime-settings $HOME/Library/Application\ Support/
 ln -sf $(pwd)/sublime_keybindings.sublime-keymap $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Default\ \(OSX\).sublime-keymap
 
 echo "Setup code folder"
-mkdir $HOME/Code
-mkdir $HOME/Code/go
+mkdir -p $HOME/Code/go
 
-cd $HOME/Code
-git clone https://github.com/LucasRoesler/dotvim.git
+git clone https://github.com/LucasRoesler/dotvim.git $HOME/Code/dotvim
 ln -s $(pwd)/dotvim $HOME/.vim
 
 echo "Installing Inconsolata font"
@@ -184,6 +182,8 @@ curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts
 echo "Setup custom bins"
 mkdir $HOME/.bin
 ln -sf $(pwd)/bin/git-exclude $HOME/.bin/git-exclude
+ln -sf $(pwd)/bin/git-template-clone $HOME/.bin/git-template-clone
+ln -sf $(pwd)/bin/kubesecret $HOME/.bin/kubesecret
 
 wget https://dl.pstmn.io/download/latest/osx -O ~/Downloads/postman_latest.zip
 tar xf ~/Downloads/postman_latest.zip -C /Applications
@@ -197,11 +197,6 @@ go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/gorename
 go get -u github.com/golang/lint/golint
 go get -u github.com/jessfraz/weather
-
-echo "Install Tomighty Pomodoro app"
-curl -sfSL -o $HOME/Downloads/Tomighty.dmg https://github.com/tomighty/tomighty-osx/releases/download/1.2/Tomighty-1.2.dmg
-echo "Please finish the install of Tomight manually"
-
 
 echo "Don't forget these manual tweaks:"
 echo "\t- set the Caps lock to Esc"
