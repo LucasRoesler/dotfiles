@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export CLUSTER=$GCLOUD_CLUSTER
+export ZONE=${GCLOUD_ZONE:-'eurpoe-west3-a'}
+export PROJECT=$GCLOUD_PROJECT
+
+gcloud container clusters get-credentials $CLUSTER --zone $ZONE --project $PROJECT \
+        && kubectl exec "$@"

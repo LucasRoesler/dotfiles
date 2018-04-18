@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo killall coreaudiod
+sudo rm /Library/Preferences/Audio/com.apple.audio.SystemSettings.plist
+

@@ -16,8 +16,7 @@
 	"animation_enabled": false,
 	"bold_folder_labels": true,
 	"color_scheme": "Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme",
-	"font_face": "Inconsolata",
-	"font_size": 12,
+	"font_face": "SF Mono",
 	"highlight_line": true,
 	"ignored_packages":
 	[
