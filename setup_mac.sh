@@ -117,7 +117,6 @@ brew install dep
 brew install ruby
 brew install go-delve/delve/delve
 brew install cmake
-brew install rust
 brew install enchant
 brew install mkdocs
 brew instal fzf
@@ -127,8 +126,15 @@ brew install tree
 brew install xhyve
 brew install kubernetes-cli
 brew install kubernetes-helm
-brew install kubectx --with-short-names
+brew install kubectx
 brew install protobuf
+
+if [ $(command -v kubectx) ]; then
+  brew unlink kubectx
+  export version=$(brew info kubectx --json | jq -r '.[].linked_keg')
+  ln -sf "/usr/local/Cellar/kubectx/$version/bin/kubectx" /usr/local/bin/kctx
+  ln -sf "/usr/local/Cellar/kubectx/$version/bin/kubens" /usr/local/bin/kns
+fi
 
 echo "Cask installing apps"
 brew cask install spectacle
@@ -150,12 +156,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 echo "Install miniconda"
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda3
-
-echo "Install gems"
-gem install mdless
-
-echo "Install node globals"
-npm install -g tldr
 
 echo "Setup dotfiles"
 mkdir -p $HOME/.config/lucas
@@ -191,12 +191,12 @@ tar xf ~/Downloads/postman_latest.zip -C /Applications
 echo "Install go dev envinroment packages"
 export GOPATH=$Home/Code/go
 export PATH=$PATH:$GOPATH/bin
-go get -u github.com/nsf/gocode
 go get -u golang.org/x/tools/cmd/guru
 go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/gorename
 go get -u github.com/golang/lint/golint
-go get -u github.com/jessfraz/weather
+go get -u golang.org/x/tools/cmd/gopls
+go get -u github.com/rakyll/gotest
 
 echo "Don't forget these manual tweaks:"
 echo "\t- set the Caps lock to Esc"

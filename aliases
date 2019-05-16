@@ -8,3 +8,5 @@ alias psqlstop='docker rm -f local-postgresql'
 
 # docker helpers
 alias dattach='shell_into_docker'
+
+# export KUBECTX_IGNORE_FZF=1

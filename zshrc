@@ -75,10 +75,6 @@ then
     source $HOME/.config/lucas/kubernetes.sh
 fi
 
-if [ -e $HOME/.config/lucas/devlab-completion.sh ]; then
-    source $HOME/.config/lucas/devlab-completion.sh
-fi
-
 # virtualenvwrapper
 if [ -e /usr/local/bin/virtualenvwrapper.sh ]
 then
@@ -120,10 +116,24 @@ export PATH=$HOME/.bin:$PATH
 export PATH="$PATH:$HOME/miniconda3/bin"
 
 # Golang install
+# export GO111MODULE=on
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# added by travis gem
-[ -f /Users/lucasroesler/.travis/travis.sh ] && source /Users/lucasroesler/.travis/travis.sh
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/lucasroesler/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/lucasroesler/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/lucasroesler/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/lucasroesler/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

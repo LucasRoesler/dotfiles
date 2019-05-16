@@ -2,22 +2,22 @@
 [core]
 # Please adapt and uncomment the following lines:
     user = Lucas Roesler
-    email = roesler.lucas@gmail.com 
+    email = roesler.lucas@gmail.com
     editor = vim
 [user]
     name = Lucas Roesler
-	email = roesler.lucas@gmail.com
-	signingkey = 29F5F0423FC2520C
+    email = roesler.lucas@gmail.com
+    signingkey = 29F5F0423FC2520C
 [push]
     default = simple
+    followTags = true
 [alias]
     # common operations
     cp = cherry-pick
-    ci = commit
     co = checkout
-    br = branch
     undo-commit = reset --soft HEAD~1
 
+    update = "pull --rebase origin master"
     # sort branches by last update
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
@@ -53,9 +53,10 @@
     enabled = 1
     autoupdate = 1
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [commit]
     template = ~/.gitmessage
 	gpgsign = true
@@ -138,3 +139,8 @@
 	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [mergetool]
 	prompt = false
+[help]
+    autocorrect = 1
+
+[url "ssh://git@github.com/contiamo/"]
+    insteadOf = https://github.com/contiamo/
