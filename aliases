@@ -2,11 +2,4 @@
 alias l="ls -lF"
 alias ll="ls -lAF"
 alias gg="grep -rnI"
-# Postgres helpers
-alias psqlstart='docker run --rm --name local-postgresql -p 5432:5432 -v /usr/local/opt/pgdata:/var/lib/postgresql/data postgres:latest'
-alias psqlstop='docker rm -f local-postgresql'
-
-# docker helpers
-alias dattach='shell_into_docker'
-
 # export KUBECTX_IGNORE_FZF=1

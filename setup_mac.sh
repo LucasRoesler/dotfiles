@@ -181,6 +181,7 @@ curl -sfSL -o $HOME/Library/Fonts/Inconsolata.otf http://levien.com/type/myfonts
 
 echo "Setup custom bins"
 mkdir $HOME/.bin
+ln -sf $(pwd)/bin/git-audit $HOME/.bin/git-audit
 ln -sf $(pwd)/bin/git-exclude $HOME/.bin/git-exclude
 ln -sf $(pwd)/bin/git-template-clone $HOME/.bin/git-template-clone
 ln -sf $(pwd)/bin/kubesecret $HOME/.bin/kubesecret
