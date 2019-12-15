@@ -75,6 +75,11 @@ then
     source $HOME/.config/lucas/kubernetes.sh
 fi
 
+if [ -e $HOME/.config/lucas/mac.sh ]
+then
+    source $HOME/.config/lucas/mac.sh
+fi
+
 export DOCKER_BUILDKIT=1
 
 # Homebrew
@@ -130,5 +135,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 conda deactivate
+
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 export CONTIAMO_DEV=/Users/lucasroesler/Code/contiamo/dev

@@ -20,6 +20,11 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Anaconda",
+		"Dockerfile Syntax Highlighting",
+		"SublimeLinter",
+		"SublimeLinter-contrib-mypy",
+		"TypeScript Syntax",
 		"Vintage"
 	],
 	"ignored_words":

@@ -2,6 +2,11 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
+		"Anaconda",
+		"Dockerfile Syntax Highlighting",
+		"SublimeLinter",
+		"SublimeLinter-contrib-mypy",
+		"TypeScript Syntax"
 	],
 	"installed_packages":
 	[

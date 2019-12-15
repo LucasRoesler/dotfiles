@@ -98,7 +98,6 @@ brew install vim
 brew install git
 brew install node
 brew install npm
-brew install python
 brew install python3
 brew install curl
 brew install libevent
@@ -113,9 +112,7 @@ brew install docker-machine-driver-xhyve
 brew install hugo
 brew install ssh-copy-id
 brew install golang
-brew install dep
 brew install ruby
-brew install go-delve/delve/delve
 brew install cmake
 brew install enchant
 brew install mkdocs
@@ -148,7 +145,6 @@ brew cask install whatsapp
 brew cask install slack
 brew cask install gpg-suite
 brew cask install minikube
-brew cask install postico
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -192,12 +188,11 @@ tar xf ~/Downloads/postman_latest.zip -C /Applications
 echo "Install go dev envinroment packages"
 export GOPATH=$Home/Code/go
 export PATH=$PATH:$GOPATH/bin
-go get -u golang.org/x/tools/cmd/guru
 go get -u golang.org/x/tools/cmd/goimports
 go get -u golang.org/x/tools/cmd/gorename
 go get -u github.com/golang/lint/golint
-go get -u golang.org/x/tools/cmd/gopls
 go get -u github.com/rakyll/gotest
+go get golang.org/x/tools/gopls@latest
 
 echo "Don't forget these manual tweaks:"
 echo "\t- set the Caps lock to Esc"
@@ -209,3 +204,6 @@ echo "\t- run \"dlite init\""
 echo "\t- create an ssh key and add it to github"
 echo "\t- add the ssh key to unlock at login"
 echo "\t- import default iterm profile from json"
+echo "\t- install vpnunlimited"
+echo "\t- install videostream"
+echo "\t- install zoom"

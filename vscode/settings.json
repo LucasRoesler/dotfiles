@@ -1,0 +1,197 @@
+{
+  "[proto3]": {},
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "go",
+    "handlebars",
+    "helm",
+    "html",
+    "jade",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "pub",
+    "python",
+    "restructuredtext",
+    "rust",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yml"
+  ],
+  "cSpell.ignorePaths": [
+    "**/package-lock.json",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".vscode",
+    "typings",
+    "**/vendor/**"
+  ],
+  "cSpell.ignoreRegExpList": [
+    "\\s+(\\w+\\s+)?\".+\"\n"
+  ],
+  "cSpell.showStatus": false,
+  "cSpell.userWords": [
+    "Conda",
+    "Infof",
+    "Queryable",
+    "Sqlizer",
+    "Unassign",
+    "Unprocessable",
+    "asyncio",
+    "backend",
+    "connexion",
+    "contiamo",
+    "cors",
+    "debugf",
+    "etcd",
+    "jsonb",
+    "kube",
+    "kubernetes",
+    "logrus",
+    "metadb",
+    "minio",
+    "nolint",
+    "openapi",
+    "openfaas",
+    "otext",
+    "postgres",
+    "psql",
+    "pytest",
+    "resync",
+    "upsert",
+    "uuid"
+  ],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.dragAndDrop": false,
+  "editor.fontFamily": "Inconsolata, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.rulers": [
+    100
+  ],
+  "extensions.ignoreRecommendations": false,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "git.autofetch": false,
+  "git.enabled": true,
+  "go.addTags": {
+    "options": "",
+    "promptForTags": false,
+    "tags": "json",
+    "transform": "camelcase"
+  },
+  "go.useLanguageServer": true,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast"
+  ],
+  "[go]": {
+    "editor.snippetSuggestions": "none",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSaveTimeout": 1000,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "gopls": {
+    "usePlaceholders": false, // add parameter placeholders when completing a function
+    // Experimental settings
+    "completeUnimported": true, // autocomplete unimported packages
+    "watchFileChanges": true, // watch file changes outside of the editor
+    "deepCompletion": true, // enable deep completion
+  },
+  "files.eol": "\n", // formatting only supports LF line endings
+  "materialTheme.fixIconsRunning": false,
+  "prettier.disableLanguages": [
+    "vue",
+    "md",
+    "markdown",
+    "yaml"
+  ],
+  "python.dataScience.enabled": false,
+  "python.linting.flake8Enabled": true,
+  "shellcheck.customArgs": [
+    "-x"
+  ],
+  "shellcheck.exclude": [
+    "SC1090"
+  ],
+  "terminal.external.osxExec": "iterm.app",
+  "vim.disableExtension": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "after": [
+        "<Esc>"
+      ],
+      "before": [
+        "f",
+        "d"
+      ]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vs-kubernetes": {
+    "vs-kubernetes.minikube-path": "/Users/lucasroesler/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
+  },
+  "window.newWindowDimensions": "maximized",
+  "window.zoomLevel": 0,
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Monokai",
+  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "breadcrumbs.enabled": true,
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "terminal.integrated.copyOnSelection": true,
+  "keyboard.touchbar.enabled": false,
+  "files.associations": {
+    "*.env": "shellscript"
+  },
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.blame.heatmap.enabled": false,
+  "gitlens.blame.avatars": false,
+  "gitlens.hovers.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.statusBar.enabled": false,
+  "gitlens.views.fileHistory.enabled": false,
+  "gitlens.views.lineHistory.enabled": false,
+  "gitlens.views.search.enabled": false,
+  "gitlens.views.compare.enabled": false,
+  "gitlens.views.repositories.enabled": false,
+  "yaml.format.enable": false,
+  "python.linting.mypyEnabled": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
+  },
+  "gitlens.currentLine.enabled": false,
+  "markdown-table-formatter.markdownGrammarScopes": [
+    "markdown",
+    "plaintext"
+  ],
+  "go.formatFlags": [
+    "-s"
+  ],
+  "workbench.colorCustomizations": {},
+  "terminal.integrated.inheritEnv": false,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.words": [
+    "Mngr",
+    "nolint",
+    "otext"
+  ],
+  "editor.foldingStrategy": "indentation"
+}
