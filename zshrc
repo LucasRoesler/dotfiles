@@ -138,4 +138,3 @@ conda deactivate
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
-export CONTIAMO_DEV=/Users/lucasroesler/Code/contiamo/dev

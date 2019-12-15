@@ -124,6 +124,7 @@ brew install xhyve
 brew install kubernetes-cli
 brew install kubernetes-helm
 brew install kubectx
+brew install shellcheck
 brew install protobuf
 
 if [ $(command -v kubectx) ]; then
@@ -198,7 +199,7 @@ echo "Don't forget these manual tweaks:"
 echo "\t- set the Caps lock to Esc"
 echo "\t- resize the dock"
 echo "\t- set the top-left hot corner to sleep"
-echo "\t- configure Slate to start at login"
+echo "\t- configure Spectacles to start at login"
 echo "\t- update KeepingYouAwake to start at login"
 echo "\t- run \"dlite init\""
 echo "\t- create an ssh key and add it to github"
