@@ -7,7 +7,7 @@
 [user]
     name = Lucas Roesler
     email = roesler.lucas@gmail.com
-    signingkey = 29F5F0423FC2520C
+	signingkey = 844304A5E39784A1DE2AC265ADE542B0DC210F7B
 [push]
     default = simple
     followTags = true

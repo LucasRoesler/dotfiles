@@ -126,6 +126,7 @@ brew install kubernetes-helm
 brew install kubectx
 brew install shellcheck
 brew install protobuf
+brew install postgresql
 
 if [ $(command -v kubectx) ]; then
   brew unlink kubectx
