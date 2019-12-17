@@ -70,11 +70,6 @@ then
     source $HOME/.config/lucas/functions.sh
 fi
 
-if [ -e $HOME/.config/lucas/kubernetes.sh ]
-then
-    source $HOME/.config/lucas/kubernetes.sh
-fi
-
 if [ -e $HOME/.config/lucas/mac.sh ]
 then
     source $HOME/.config/lucas/mac.sh
@@ -102,11 +97,6 @@ if _has fzf && _has ag; then
 fi
 
 
-if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/" ]; then
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-    source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-fi
-
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/.bin:$PATH
 
@@ -114,11 +104,9 @@ export PATH=$HOME/.bin:$PATH
 export PATH="$PATH:$HOME/miniconda3/bin"
 
 # Golang install
-# export GO111MODULE=on
+export GO111MODULE=on
 export GOPATH=$HOME/Code/go
 export PATH=$PATH:$GOPATH/bin
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -134,7 +122,12 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-conda deactivate
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lucasroesler/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/lucasroesler/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/lucasroesler/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/lucasroesler/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

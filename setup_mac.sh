@@ -157,6 +157,8 @@ echo "Install miniconda"
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda3
 
+conda config --set auto_activate_base false
+
 echo "Setup dotfiles"
 mkdir -p $HOME/.config/lucas
 ln -sf $(pwd)/aliases $HOME/.config/lucas/aliases.sh
