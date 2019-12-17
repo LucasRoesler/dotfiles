@@ -128,13 +128,6 @@ brew install shellcheck
 brew install protobuf
 brew install postgresql
 
-if [ $(command -v kubectx) ]; then
-  brew unlink kubectx
-  export version=$(brew info kubectx --json | jq -r '.[].linked_keg')
-  ln -sf "/usr/local/Cellar/kubectx/$version/bin/kubectx" /usr/local/bin/kctx
-  ln -sf "/usr/local/Cellar/kubectx/$version/bin/kubens" /usr/local/bin/kns
-fi
-
 echo "Cask installing apps"
 brew cask install spectacle
 brew cask install iterm2
@@ -147,6 +140,15 @@ brew cask install whatsapp
 brew cask install slack
 brew cask install gpg-suite
 brew cask install minikube
+
+if [ $(command -v kubectx) ]; then
+  brew unlink kubectx
+  version=$(brew info kubectx --json | jq -r '.[].versions.stable')
+  ln -s /usr/local/Cellar/kubectx/$version/bin/kubectx /usr/local/bin/kctx
+  ln -s /usr/local/Cellar/kubectx/$version/bin/kubens /usr/local/bin/kns
+  ln -s /usr/local/Cellar/kubectx/$version/etc/bash_completion.d/kubectx /usr/local/etc/bash_completion.d/kubectx
+  ln -s /usr/local/Cellar/kubectx/$version/etc/bash_completion.d/kubens /usr/local/etc/bash_completion.d/kubens
+fi
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -182,10 +184,7 @@ mkdir $HOME/.bin
 ln -sf $(pwd)/bin/git-audit $HOME/.bin/git-audit
 ln -sf $(pwd)/bin/git-exclude $HOME/.bin/git-exclude
 ln -sf $(pwd)/bin/git-template-clone $HOME/.bin/git-template-clone
-ln -sf $(pwd)/bin/kubesecret $HOME/.bin/kubesecret
 
-wget https://dl.pstmn.io/download/latest/osx -O ~/Downloads/postman_latest.zip
-tar xf ~/Downloads/postman_latest.zip -C /Applications
 
 echo "Install go dev envinroment packages"
 export GOPATH=$Home/Code/go
@@ -209,3 +208,4 @@ echo "\t- import default iterm profile from json"
 echo "\t- install vpnunlimited"
 echo "\t- install videostream"
 echo "\t- install zoom"
+echo "\t- install gcloud from https://cloud.google.com/sdk/docs/#install_the_latest_cloud_tools_version_cloudsdk_current_version"
