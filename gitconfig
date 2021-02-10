@@ -85,7 +85,6 @@
   interactive = auto
   grep = auto
 [color "status"]
-  header = black bold
   branch = cyan
   nobranch = red
   unmerged = red
@@ -127,7 +126,7 @@
   separator = red bold
   linenumber = normal
 [gpg]
-	program = gpg2
+	program = gpg
 [url "ssh://git@github.com/"]
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
@@ -147,3 +146,7 @@
 
 [url "ssh://git@github.com/contiamo/"]
     insteadOf = https://github.com/contiamo/
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
