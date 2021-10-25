@@ -28,7 +28,7 @@ end
 load_config "contiamo.env"
 load_config "multipass.zsh"
 load_config "python.zsh"
-load_config "xps.zsh"
+load_config "xps.fish"
 load_config "secrets.sh"
 set -gx DOCKER_BUILDKIT 1
 
@@ -38,3 +38,7 @@ set -gx DOCKER_BUILDKIT 1
 # eval /home/lucas/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 #
+
+
+status is-login; and pyenv init --path | source
+status is-interactive; and pyenv init - | source
