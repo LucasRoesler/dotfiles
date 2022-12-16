@@ -15,9 +15,10 @@
     # common operations
     cp = cherry-pick
     co = checkout
+    sw = switch	
     undo-commit = reset --soft HEAD~1
 
-    update = "pull --rebase origin master"
+    update = "pull --rebase origin main"
     # sort branches by last update
     b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
@@ -28,9 +29,6 @@
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     # one-line log with list of files changed
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-
-    # set the upstream
-    sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
 
     # cleanup old branches
     ; audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
@@ -144,7 +142,11 @@
     autocorrect = 1
 
 [url "ssh://git@github.com/contiamo/"]
-    insteadOf = https://github.com/contiamo/
+	insteadOf = https://github.com/contiamo/
+
+[url "https://gitlab.devops.telekom.de/eliza/"]
+    insteadOf = git@gitlab.devops.telekom.de:eliza
+
 [init]
 	defaultBranch = main
 [pull]

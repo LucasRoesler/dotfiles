@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+#
+# This is a script to automatically mute the computer and pause music when headphones are unplugged.
+# It uses pactl and playerctl to control the volume and pause/unpause the music. Make sure to install
+# playerctl first using: `sudo apt install playerctl`.
+
+# This should be run on startup, first add auto-mute to your PATH and then
+# create `auto-mute.desktop` in ~/.config/autostart/ and add the following
+# to the file:
+# [Desktop Entry]
+# Type=Application
+# Exec=auto-mute
+# Hidden=false
+# NoDisplay=false
+# X-GNOME-Autostart-enabled=true
+# Name[en_US]=Auto Mute
+# Name=Auto Mute
+# Comment[en_US]=toggle headphone mute when plugged or unplugged
+# Comment=toggle headphone mute when plugged or unplugged
+
+#
+# MIT License
+# Copyright (c) 2021 Lucas Roesler
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+HEADPHONE_SINK=${HEADPHONE_SINK:-'alsa_output.pci-0000_00_1f.3.analog-stereo'}
+
+acpi_listen | while IFS= read -r line; do
+    current_sink=$(pactl get-default-sink)
+    if [ "$line" = "jack/headphone HEADPHONE plug" ]; then
+        if [ "$current_sink" = "$HEADPHONE_SINK" ]; then
+            pactl set-sink-mute @DEFAULT_SINK@ 0
+            pactl set-sink-volume @DEFAULT_SINK@ 20%
+        fi
+    elif [ "$line" = "jack/headphone HEADPHONE unplug" ]; then
+        if [ "$current_sink" = "$HEADPHONE_SINK" ]; then
+            pactl set-sink-mute @DEFAULT_SINK@ 1
+            if [ -x "$(command -v playerctl)" ]; then
+                playerctl --all-players pause
+            fi
+        fi
+    fi
+done

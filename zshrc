@@ -40,13 +40,13 @@ export VI_MODE_SET_CURSOR=true
 # User configuration
 
 function load_config() {
-  if [[ -f "$HOME/.config/lucas/$1" ]]; then 
+  if [[ -f "$HOME/.config/lucas/$1" ]]; then
 	  source "$HOME/.config/lucas/$1"
   fi
 }
 
 load_config "aliases.zsh"
-load_config "functions.zsh" 
+load_config "functions.zsh"
 load_config "contiamo.env"
 load_config "multipass.zsh"
 load_config "python.zsh"
@@ -54,16 +54,15 @@ load_config "xps.zsh"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lucas/.miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/lucas/conda miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/lucas/.miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lucas/.miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/lucas/conda miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lucas/conda miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/lucas/.miniconda3/bin:$PATH"
+        export PATH="/home/lucas/conda miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

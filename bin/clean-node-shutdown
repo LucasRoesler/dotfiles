@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# iterate through all namespaces and remove any pod stopped due to an imminent noe shutdown
+
+namespaces=$(kubectl get namespace -o jsonpath='{.items[*].metadata.name}')
+
+for namespace in $namespaces; do
+    echo "Namespace: $namespace"
+    pods=$(kubectl -n "$namespace" get po -o jsonpath='{.items[?(@.status.message=="Pod was terminated in response to imminent node shutdown.")].metadata.name}')
+    if [ -n "$pods" ]; then
+        echo "Pods to delete: $pods"
+        echo "$pods" | xargs kubectl -n "$namespace" delete po
+    fi
+done

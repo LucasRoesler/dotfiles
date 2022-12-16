@@ -30,10 +30,6 @@ end
 function fish_prompt
   set -l last_status $status
 
-  if [ (_envname) ]
-    set pyenv "$blue(" (_envname) ") "
-  end
-
   if test $last_status = 0
       set arrow "$green❯ "
   else
@@ -41,5 +37,5 @@ function fish_prompt
   end
   # set -l cwd $cyan(basename (prompt_pwd))$normal
   set -l cwd $cyan(prompt_pwd)$normal
-  echo -s $pyenv $cwd (fish_git_prompt) $normal $arrow
+  echo -s $cwd (fish_git_prompt) $normal $arrow
 end
