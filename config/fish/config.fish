@@ -1,6 +1,5 @@
-set -gxp PATH $HOME/go/bin $HOME/.local/bin $HOME/.poetry/bin $HOME/.cargo/bin $HOME/.local/go/bin
-set -gx GOBIN $HOME/go/bin
-set -gx EDITOR vim
+set -gxp PATH $HOME/.local/bin
+set -gx EDITOR nvim
 
 set -g cyan (set_color -o cyan)
 set -g yellow (set_color -o yellow)
@@ -26,11 +25,11 @@ end
 
 # load_config "functions.zsh"
 load_config "contiamo.env"
-load_config "multipass.zsh"
-load_config "python.zsh"
-load_config "xps.fish"
 load_config "secrets.sh"
+
 set -gx DOCKER_BUILDKIT 1
+set -gx BUILDKIT_PROGRESS plain
+set -gx MOZ_ENABLE_WAYLAND 1
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
