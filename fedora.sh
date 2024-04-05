@@ -31,6 +31,9 @@ dnf install \
     1password
     1password-cli
 
+ln -sf $(which nvim) ~/.local/bin/vim
+ln -sf $(which bat) ~/.local/bin/batcat
+
 # flatpak
 flatpak install flathub com.mattjakeman.ExtensionManager
 flatpak install flathub io.bassi.Amberol
