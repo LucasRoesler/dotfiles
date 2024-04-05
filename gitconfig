@@ -1,77 +1,120 @@
 # This is Git's per-user configuration file.
 [core]
 # Please adapt and uncomment the following lines:
-    user = Lucas Roesler
-    email = roesler.lucas@gmail.com
-    editor = vim
+  user = Lucas Roesler
+  email = roesler.lucas@gmail.com
+  editor = vim
 [user]
-    name = Lucas Roesler
-    email = roesler.lucas@gmail.com
-	signingkey = 844304A5E39784A1DE2AC265ADE542B0DC210F7B
+  name = Lucas Roesler
+  email = roesler.lucas@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIMoCFFRKiLnU6poXQMcjkalu6eci6NfzP4lMpNgecTT
+
 [push]
-    default = simple
-    followTags = true
+  default = simple
+  followTags = true
+  autoSetupRemote = true
+
+[diff]
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+  mnemonicPrefix = true
+  noPrefix = true
+  tool = difftastic
+  compactionHeuristic = true
+  noprefix = true
+  external = difft
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "REMOTE"
+
+[mergetool]
+  prompt = false
+
+[pager]
+  difftool = true
+
+[rerere]
+  enabled = 1
+  autoupdate = 1
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  required = true
+  process = git-lfs filter-process
+[commit]
+  gpgsign = true
+[gpg]
+  program = gpg
+  format = ssh
+[gpg "ssh"]
+  program = /opt/1Password/op-ssh-sign
+[rebase]
+  autosquash = true
+[log]
+    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+  abbrevCommit = true
+[init]
+  defaultBranch = main
+[pull]
+  ff = only
+[help]
+  autocorrect = 1
+
+[url "https://github.com/"]
+  insteadOf = gh:
+[url "https://gist.github.com/"]
+  insteadOf = gist:
+
+[url "ssh://git@github.com/"]
+
+[url "ssh://git@github.com/contiamo/"]
+  insteadOf = https://github.com/contiamo/
+
+[url "https://gitlab.devops.telekom.de/eliza/"]
+  insteadOf = git@gitlab.devops.telekom.de:eliza
+
 [alias]
     # common operations
-    cp = cherry-pick
-    co = checkout
-    sw = switch	
-    undo-commit = reset --soft HEAD~1
+  cp = cherry-pick
+  co = checkout
+  sw = switch
+  force="push --force-with-lease --force-if-includes"
+  undo-commit = reset --soft HEAD~1
 
-    update = "pull --rebase origin main"
+  update = "pull --rebase origin main"
     # sort branches by last update
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+  b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
     # log as a graph
-    graph = log --graph --oneline --decorate --all
+  graph = log --graph --oneline --decorate --all
 
     # one-line log
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
     # one-line log with list of files changed
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 
     # cleanup old branches
     ; audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
     ; clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
-    clean-audit = "!git audit | xargs -n 1 git branch -D"
+  clean-audit = "!git audit | xargs -n 1 git branch -D"
+
+  cleanup = "!xargs -n 1 git branch -D"
 
     # squash the currently staged files into the previous commit
     # note that if you have already pushed the branch, you will probably
     # need to push with `git push -f`
-    fixup = "!git commit --amend"
+  fixup = "!git commit --amend"
 
     # Thin out older metadata within the repository, reduceses filesystem footprint
-    trim = !git reflog expire --expire=now --all && git gc --prune=now
+  trim = !git reflog expire --expire=now --all && git gc --prune=now
 
     # list git aliases
-    la = "!git config -l | grep alias | cut -c 7-"
-[diff]
-    # Use better, descriptive initials (c, i, w) instead of a/b.
-    mnemonicPrefix = true
-    noPrefix = true
-[rerere]
-    enabled = 1
-    autoupdate = 1
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
-[commit]
-	gpgsign = true
-[rebase]
-	autosquash = true
-[diff]
-	compactionHeuristic = true
-	noprefix = true
-[log]
-    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
-    abbrevCommit = true
-[url "https://github.com/"]
-    insteadOf = gh:
-[url "https://gist.github.com/"]
-    insteadOf = gist:
+  la = "!git config -l | grep alias | cut -c 7-"
 
+
+# color and styles
 [color]
   pager = true
   ui = auto
@@ -122,32 +165,3 @@
   selected = normal
   separator = red bold
   linenumber = normal
-[gpg]
-	program = gpg
-[url "ssh://git@github.com/"]
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
-[merge "jupyternotebook"]
-	driver = git-nbmergedriver merge %O %A %B %L %P
-	name = jupyter notebook merge driver
-[difftool "nbdime"]
-	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\"
-[difftool]
-	prompt = false
-[mergetool "nbdime"]
-	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-[mergetool]
-	prompt = false
-[help]
-    autocorrect = 1
-
-[url "ssh://git@github.com/contiamo/"]
-	insteadOf = https://github.com/contiamo/
-
-[url "https://gitlab.devops.telekom.de/eliza/"]
-    insteadOf = git@gitlab.devops.telekom.de:eliza
-
-[init]
-	defaultBranch = main
-[pull]
-	ff = only
