@@ -3,20 +3,32 @@ sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https:/
 
 dnf install \
     # basics
-    neovim 
+    neovim
     difftastic
     rsync
     # media
     playerctl
-    # shell 
-    fish 
+    # shell
+    fish
     # rust
     just
     rustup
-    # python 
+    # python
     pipx
-    # auth 
-    1password 
+    openssl-devel
+    gcc-c++
+    zlib-devel
+    sqlite-devel
+    xz-devel
+    libedit-devel
+    bzip2-devel
+    libffi-devel
+    tk-devel
+    readline-devel
+    libarrow-devel
+    python3-devel
+    # auth
+    1password
     1password-cli
 
 # flatpak
@@ -41,6 +53,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 bash ~/.fzf/install
 
 pipx install poetry
+
+poetry config virtualenvs.in-project true
+poetry config virtualenvs.prefer-active-python true
 
 # configuration
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
