@@ -13,14 +13,15 @@ set fish_greeting ""
 
 # don't describe the command for darwin
 # https://github.com/fish-shell/fish-shell/issues/6270
-function __fish_describe_command; end
+function __fish_describe_command
+end
 
 # Senstive functions which are not pushed to Github
 # It contains work related stuff, some functions, aliases etc...
 function load_config
-	if test -f "$HOME/.config/lucas/$argv"
-		source $HOME/.config/lucas/$argv
-	end
+    if test -f "$HOME/.config/lucas/$argv"
+        source $HOME/.config/lucas/$argv
+    end
 end
 
 # load_config "functions.zsh"
@@ -41,3 +42,9 @@ set -gx MOZ_ENABLE_WAYLAND 1
 
 status is-login; and pyenv init --path | source
 status is-interactive; and pyenv init - | source
+
+
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_STATE_HOME $HOME/.local/state
+set -gx NVM_DIR $XDG_CONFIG_HOME/nvm
