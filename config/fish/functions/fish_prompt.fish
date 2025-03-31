@@ -5,8 +5,8 @@ set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showcolorhints 1
 set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_describe_style 'contains'
-set -g __fish_git_prompt_char_dirtystate "✖"
-set -g __fish_git_prompt_char_cleanstate "✔"
+set -g __fish_git_prompt_char_dirtystate "⨯"
+set -g __fish_git_prompt_char_cleanstate "🗸"
 set -g __fish_git_prompt_char_untrackedfiles "…"
 set -g __fish_git_prompt_char_stagedstate "●"
 set -g __fish_git_prompt_char_conflictedstate "+"

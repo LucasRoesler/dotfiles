@@ -1,0 +1,96 @@
+#!/bin/bash
+# source: https://gist.github.com/LucasRoesler/c7b245bcd9f33bc989e279ba9cdb9828
+# usage:
+#   create-repo name [owner]
+#   create-repo name # owner defaults to contiamo
+
+# name is the first arg, fallback to the the current directory name
+NAME="$1"
+OWNER=${2:-contiamo}
+
+# convert name to lower case
+NAME=$(echo $NAME | tr '[:upper:]' '[:lower:]')
+
+# check if the gh cli is installed, complain if it is not found
+if ! command -v gh &>/dev/null; then
+  echo "gh could not be found, please install from https://cli.github.com/"
+  exit
+fi
+
+# check if pyenv is installed, complain if it is not found
+if ! command -v pyenv &>/dev/null; then
+  echo "pyenv could not be found, please install from https://github.com/pyenv/pyenv#installationpo"
+  exit
+fi
+
+# check if poetry is installed, complain if not found
+if ! command -v poetry &>/dev/null; then
+  echo "poetry could not be found, please install from https://python-poetry.org/docs/"
+  exit
+fi
+
+PREFERRED_PYTHON_VERSION=${PREFERRED_PYTHON_VERSION:-"3.12"}
+eval "$(pyenv init -)"
+
+pyenv install -s "$PREFERRED_PYTHON_VERSION"
+pyenv shell "$PREFERRED_PYTHON_VERSION"
+pyenv version
+
+echo "Creating repo $NAME"
+# require user response
+read -p "Press enter to continue"
+
+# if current directory is a git repo, use it as the source
+# otherwise, create a new repo
+gh repo create "$OWNER/$NAME" --private -t all --disable-wiki --disable-issues --clone=false
+gh repo edit "$OWNER/$NAME" \
+  --enable-projects=false \
+  --delete-branch-on-merge \
+  --enable-auto-merge \
+  --enable-merge-commit=false \
+  --allow-update-branch
+
+## see https://github.com/cli/cli/issues/3528
+# get the repo ID of the "cli/cli" repository
+repositoryId="$(gh api graphql -f query="{repository(owner:\"$OWNER\",name:\"$NAME\"){id}}" -q .data.repository.id)"
+
+echo "Repository ID: $repositoryId"
+# create a branch protection rule (untested!)
+gh api graphql --silent -f query='
+mutation($repositoryId:ID!,$branch:String!,$requiredReviews:Int!) {
+  createBranchProtectionRule(input: {
+    repositoryId: $repositoryId
+    pattern: $branch
+    requiresApprovingReviews: true
+    requiredApprovingReviewCount: $requiredReviews
+    dismissesStaleReviews: true
+    requiresConversationResolution: true
+    requiresStatusChecks: true
+  }) { clientMutationId }
+}' -f repositoryId="$repositoryId" -f branch=main -F requiredReviews=1
+
+poetry new "$NAME" --no-interaction --src
+cd "$NAME" || exit 1
+
+pyenv local "$PREFERRED_PYTHON_VERSION"
+pyenv version
+
+REPOSITORY_URL="$(gh api graphql -f query="{repository(owner:\"$OWNER\",name:\"$NAME\"){sshUrl}}" -q .data.repository.sshUrl)"
+git init .
+git remote add origin "$REPOSITORY_URL"
+
+poetry add --group=dev pyright@latest ruff@latest typos@latest
+poetry add --group=test pytest@latest
+
+BOOTSTRAP_GIST="https://gist.githubusercontent.com/LucasRoesler/a16217be6c0f65d8c2b9a61c8387a6f0"
+BOOTSTRAP_VERSION=${BOOTSTRAP_VERSION:-12149027c905bb13cf4604ff2b619ff58867e988}
+touch .gitignore
+
+curl -fsSL -o - "$BOOTSTRAP_GIST/raw/$BOOTSTRAP_VERSION/gitignore" >>.gitignore
+curl -fsSL -o - "$BOOTSTRAP_GIST/raw/$BOOTSTRAP_VERSION/Dockerfile" >>Dockerfile
+curl -fsSL -o - "$BOOTSTRAP_GIST/raw/$BOOTSTRAP_VERSION/pyproject-tool-setup.toml" >>pyproject.toml
+curl -fsSL -o - "$BOOTSTRAP_GIST/raw/$BOOTSTRAP_VERSION/Taskfile.yaml" >>Taskfile.yaml
+
+git add .
+git commit -sm "feat: initial project bootstrap"
+git push
