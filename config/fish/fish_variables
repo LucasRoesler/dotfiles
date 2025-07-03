@@ -2,7 +2,7 @@
 # VERSION: 3.0
 SETUVAR CONDA_PROMPT_MODIFIER:\x1d
 SETUVAR --export PYENV_ROOT:/home/lucas/\x2epyenv
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fisher_2m_2F_fish_2D_history_2D_merge_files:/home/lucas/\x2econfig/fish/functions/up\x2dor\x2dsearch\x2efish
 SETUVAR _fisher_PatrickF1_2F_fzf_2E_fish_files:/home/lucas/\x2econfig/fish/functions/__fzf_extract_var_info\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_preview_file\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_report_file_type\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_search_current_dir\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_search_git_log\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_search_git_status\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_search_history\x2efish\x1e/home/lucas/\x2econfig/fish/functions/__fzf_search_shell_variables\x2efish\x1e/home/lucas/\x2econfig/fish/conf\x2ed/fzf\x2efish
 SETUVAR _fisher_edc_2F_bass_files:/home/lucas/\x2econfig/fish/functions/__bass\x2epy\x1e/home/lucas/\x2econfig/fish/functions/bass\x2efish

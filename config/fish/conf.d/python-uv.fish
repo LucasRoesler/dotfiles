@@ -1,2 +1,1 @@
-set UV_ENV_FILE=".env"
-
+# set -gx UV_ENV_FILE ".env"
