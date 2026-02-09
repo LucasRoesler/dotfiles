@@ -32,18 +32,6 @@ set -gx DOCKER_BUILDKIT 1
 set -gx BUILDKIT_PROGRESS plain
 set -gx MOZ_ENABLE_WAYLAND 1
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# content copied to conf.d/conda.fish
-# eval /home/lucas/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-#
-
-
-status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source
-
-
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
