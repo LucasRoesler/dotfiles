@@ -67,16 +67,10 @@ flatpak install flathub dev.bragefuglseth.Fretboard
 curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale set --operator=$USER
 
-curl https://pyenv.run | bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 bash ~/.fzf/install
-
-pipx install poetry
-
-poetry self add poetry-dotenv-plugin
-poetry config virtualenvs.in-project true
-poetry config virtualenvs.prefer-active-python true
 
 # configuration
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"

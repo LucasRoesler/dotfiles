@@ -40,9 +40,6 @@ set -gx NVM_DIR $XDG_CONFIG_HOME/nvm
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
-# opencode
-fish_add_path /home/lucas/.opencode/bin
-
 if status is-interactive
     # Ensures Zellij looks for an existing session to attach to
     set -gx ZELLIJ_AUTO_ATTACH true
