@@ -132,7 +132,6 @@
   "shellcheck.exclude": [
     "SC1090"
   ],
-  "terminal.external.osxExec": "iterm.app",
   "vim.disableExtension": true,
   "vim.insertModeKeyBindings": [
     {
@@ -146,9 +145,6 @@
     }
   ],
   "vim.useSystemClipboard": true,
-  "vs-kubernetes": {
-    "vs-kubernetes.minikube-path": "/Users/lucasroesler/.vs-kubernetes/tools/minikube/darwin-amd64/minikube"
-  },
   "window.newWindowDimensions": "maximized",
   "window.zoomLevel": 0,
   "workbench.activityBar.visible": false,
