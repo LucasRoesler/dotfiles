@@ -24,7 +24,6 @@ function load_config
     end
 end
 
-# load_config "functions.zsh"
 load_config "contiamo.env"
 load_config "secrets.sh"
 

@@ -106,7 +106,6 @@ brew install readline
 brew install git
 brew install git-open
 brew install git-extras
-brew install zsh
 brew install docker
 brew install docker-machine-driver-xhyve
 brew install hugo
@@ -150,9 +149,6 @@ if [ $(command -v kubectx) ]; then
   ln -s /usr/local/Cellar/kubectx/$version/etc/bash_completion.d/kubens /usr/local/etc/bash_completion.d/kubens
 fi
 
-echo "Installing oh my zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 echo "Install miniconda"
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 bash ~/miniconda.sh -b -p $HOME/miniconda3
@@ -165,7 +161,6 @@ ln -sf $(pwd)/aliases $HOME/.config/lucas/aliases.sh
 ln -sf $(pwd)/functions.sh $HOME/.config/lucas/functions.sh
 ln -sf $(pwd)/mac $HOME/.config/lucas/mac.sh
 ln -sf $(pwd)/bashrc $HOME/.bashrc
-ln -sf $(pwd)/zshrc $HOME/.zshrc
 ln -sf $(pwd)/gitconfig $HOME/.gitconfig
 ln -sf $(pwd)/gitmessage $HOME/.gitmessage
 ln -sf $(pwd)/package_control.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Package\ Control.sublime-settings
