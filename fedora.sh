@@ -12,41 +12,33 @@ repo_gpgcheck=0
 gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOM
 
-dnf install
-# basics
-neovim \
+sudo dnf install \
+    neovim \
     difftastic \
     rsync \
     powertop \
-    jq
-# media
-playerctl
-# shell
-fish
-# rust
-just \
-    rustup
-# python
-pipx
-openssl-devel
-gcc-c++
-zlib-devel
-sqlite-devel
-xz-devel
-libedit-devel
-bzip2-devel
-libffi-devel
-tk-devel
-readline-devel
-libarrow-devel
-python3-devel
-# auth
-1password
-1password-cli
-# docker
-docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# google
-google-cloud-cli
+    jq \
+    playerctl \
+    fish \
+    just \
+    rustup \
+    pipx \
+    openssl-devel \
+    gcc-c++ \
+    zlib-devel \
+    sqlite-devel \
+    xz-devel \
+    libedit-devel \
+    bzip2-devel \
+    libffi-devel \
+    tk-devel \
+    readline-devel \
+    libarrow-devel \
+    python3-devel \
+    1password \
+    1password-cli \
+    docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
+    google-cloud-cli
 
 ln -sf $(which nvim) ~/.local/bin/vim
 ln -sf $(which bat) ~/.local/bin/batcat
@@ -90,10 +82,10 @@ helm_version=$(curl -L -s https://github.com/helm/helm/releases/latest | grep -o
 curl -LO "https://get.helm.sh/helm-${helm_version}-linux-amd64.tar.gz"
 curl -LO "https://get.helm.sh/helm-${helm_version}-linux-amd64.tar.gz.sha256"
 
-echo "$(cat helm-${helm_version}linux-amd64.tar.gz.sha256)  helm-${helm_version}linux-amd64.tar.gz" | sha256sum --check
+echo "$(cat helm-${helm_version}-linux-amd64.tar.gz.sha256)  helm-${helm_version}-linux-amd64.tar.gz" | sha256sum --check
 if [ $? -eq 0 ]; then
-    tar -xvf "helm-${helm_version}linux-amd64.tar.gz"
+    tar -xvf "helm-${helm_version}-linux-amd64.tar.gz"
     chmod +x linux-amd64/helm
     mv linux-amd64/helm ~/.local/bin/helm
-    rm -rf helm-${helm_version}linux-amd64.tar.gz linux-amd64 helm-${helm_version}linux-amd64.tar.gz.sha256
+    rm -rf helm-${helm_version}-linux-amd64.tar.gz linux-amd64 helm-${helm_version}-linux-amd64.tar.gz.sha256
 fi

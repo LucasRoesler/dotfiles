@@ -1,17 +1,7 @@
 set -gxp PATH $HOME/.local/bin
 set -gx EDITOR nvim
 
-set -g cyan (set_color -o cyan)
-set -g yellow (set_color -o yellow)
-set -g red (set_color -o red)
-set -g blue (set_color -o blue)
-set -g green (set_color -o green)
-set -g normal (set_color normal)
-
-# don't show any greetings
-set fish_greeting ""
-
-# Senstive functions which are not pushed to Github
+# Sensitive functions which are not pushed to Github
 # It contains work related stuff, some functions, aliases etc...
 function load_config
     if test -f "$HOME/.config/lucas/$argv"

@@ -1,5 +1,9 @@
+set -g cyan (set_color -o cyan)
+set -g red (set_color -o red)
+set -g green (set_color -o green)
+set -g normal (set_color normal)
+
 # git prompt settings
-# set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_showdirtystate 1
 set -g __fish_git_prompt_showuntrackedfiles 1
 set -g __fish_git_prompt_showcolorhints 1
@@ -17,16 +21,6 @@ set -g __fish_git_prompt_color_prefix blue --bold
 set -g __fish_git_prompt_color_suffix blue --bold
 set -g fish_prompt_pwd_dir_length 4
 
-function _envname
-  if test -n "$CONDA_DEFAULT_ENV"
-    echo $CONDA_DEFAULT_ENV
-  else if test -n "$VIRTUAL_ENV"
-    echo (basename "$VIRTUAL_ENV")
-  else
-    echo ""
-  end
-end
-
 function fish_prompt
   set -l last_status $status
 
@@ -35,7 +29,6 @@ function fish_prompt
   else
       set arrow "$red❯ "
   end
-  # set -l cwd $cyan(basename (prompt_pwd))$normal
   set -l cwd $cyan(prompt_pwd)$normal
   echo -s $cwd (fish_git_prompt) $normal $arrow
 end
