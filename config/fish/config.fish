@@ -21,13 +21,3 @@ set -gx MOZ_ENABLE_WAYLAND 1
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx XDG_DATA_HOME $HOME/.local/share
 set -gx XDG_STATE_HOME $HOME/.local/state
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
-if status is-interactive
-    # Ensures Zellij looks for an existing session to attach to
-    set -gx ZELLIJ_AUTO_ATTACH true
-
-end

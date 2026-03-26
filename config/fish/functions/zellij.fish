@@ -1,3 +1,5 @@
+set -gx ZELLIJ_AUTO_ATTACH true
+
 function zellij --wraps=zellij --description 'Zellij with auto-attach to default session'
     if test (count $argv) -eq 0
         # No args: attach to "term" session (creates if needed, resurrects if exited)
