@@ -1,0 +1,53 @@
+layout {
+  default_tab_template {
+        pane size=2 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} {tabs}"
+                format_center ""
+                format_right  "{datetime}"
+                format_space  "#[bg=#000000]"
+
+                border_enabled  "true"
+                border_char     "─"
+                border_format   "#[fg=#333333]{char}"
+                border_position "bottom"
+                hide_frame_for_single_pane "true"
+
+                mode_normal        "#[fg=#b8bb26,bg=#000000,bold]{name}"
+                mode_locked        "#[fg=#fb4934,bg=#000000,bold]{name}"
+                mode_resize        "#[fg=#fabd2f,bg=#000000,bold]{name}"
+                mode_pane          "#[fg=#d3869b,bg=#000000,bold]{name}"
+                mode_tab           "#[fg=#83a598,bg=#000000,bold]{name}"
+                mode_scroll        "#[fg=#8ec07c,bg=#000000,bold]{name}"
+                mode_session       "#[fg=#fe8019,bg=#000000,bold]{name}"
+                mode_move          "#[fg=#a89984,bg=#000000,bold]{name}"
+                mode_search        "#[fg=#fabd2f,bg=#000000,bold]{name}"
+                mode_default_to_mode "normal"
+
+                tab_normal              "#[fg=#6C7086,bg=#000000] {index}:{name} "
+                tab_active              "#[fg=#9399B2,bg=#000000,bold] {index}:{name} "
+                tab_fullscreen_indicator "□ "
+                tab_sync_indicator       "  "
+                tab_floating_indicator   "󰉈 "
+
+                datetime          "#[fg=#9399B2,bg=#000000] {format} "
+                datetime_format   "%Y-%m-%dT%H:%M"
+                datetime_timezone "Europe/Berlin"
+            }
+        }
+        children
+  }
+
+  tab name="bot" split_direction="vertical" cwd="~/code/assistant" {
+    pane
+  }
+
+  tab name="ctmo" split_direction="vertical" cwd="~/code/ctmo" {
+	  pane
+  }
+
+  tab name="gsus" split_direction="vertical" cwd="~/code/telekom/gsus/pro-89" {
+	  pane
+  }
+
+}

@@ -1,0 +1,12 @@
+
+
+font-family = "Monaspace Argon"
+theme = "Monokai Remastered"
+
+keybind = shift+enter=text:\n
+keybind = global:ctrl+~=toggle_quick_terminal
+
+quit-after-last-window-closed = false
+
+mouse-shift-capture = false
+mouse-scroll-multiplier = precision:1,discrete:1
