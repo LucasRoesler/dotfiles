@@ -27,6 +27,8 @@ end
 load_config "contiamo.env"
 load_config "secrets.sh"
 
+set -gx VAULT_PATH $HOME/Documents/notes-vault
+
 set -gx DOCKER_BUILDKIT 1
 set -gx BUILDKIT_PROGRESS plain
 set -gx MOZ_ENABLE_WAYLAND 1
@@ -47,3 +49,5 @@ if status is-interactive
     # Generates the auto-start script and executes it
     #    eval (zellij setup --generate-auto-start fish | string collect)
 end
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
