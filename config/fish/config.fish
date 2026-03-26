@@ -31,5 +31,3 @@ if status is-interactive
     set -gx ZELLIJ_AUTO_ATTACH true
 
 end
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)"
