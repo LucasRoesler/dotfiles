@@ -2,3 +2,4 @@
 temp/
 config/zellij/plugins/*.wasm
 config/fish/fish_variables
+.worktrees/

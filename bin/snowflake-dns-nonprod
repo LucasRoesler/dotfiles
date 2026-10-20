@@ -1,0 +1,21 @@
+#!/bin/bash
+# Route Snowflake privatelink DNS lookups through the non-prod Data Platform VPN link.
+set -euo pipefail
+
+link=Data_Platform_N
+domain='~privatelink.snowflakecomputing.com'
+
+if ! ip link show dev "$link" >/dev/null 2>&1; then
+    echo "Interface $link not found, is the non-prod VPN connected?"
+    exit 1
+fi
+
+# pkexec shows a graphical password prompt and clears the environment, so resolvectl needs its absolute path.
+status=0
+pkexec /usr/bin/resolvectl domain "$link" "$domain" 2>&1 || status=$?
+case $status in
+    0) echo "Snowflake privatelink DNS routed via $link" ;;
+    126) echo "Authentication dismissed, DNS unchanged"; exit 1 ;;
+    127) echo "Authorization failed, DNS unchanged"; exit 1 ;;
+    *) echo "resolvectl failed with exit code $status"; exit "$status" ;;
+esac

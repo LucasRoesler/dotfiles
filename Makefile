@@ -1,7 +1,7 @@
 
 FISH_CONFIG:=${HOME}/.config/fish
 
-.PHONY: fish bin
+.PHONY: fish bin vicinae
 
 ${HOME}/.config/fish:
 	ln -sf $(CURDIR)/config/fish ${HOME}/.config/fish
@@ -15,3 +15,7 @@ bin: ## Symlink bin/ scripts to ~/.local/bin
 	@for f in $(CURDIR)/bin/*; do \
 		ln -sf "$$f" ${HOME}/.local/bin/$$(basename "$$f"); \
 	done
+
+vicinae: bin ## Symlink Vicinae script commands to ~/.local/share/vicinae/scripts
+	mkdir -p ${HOME}/.local/share/vicinae
+	ln -sfn $(CURDIR)/config/vicinae/scripts ${HOME}/.local/share/vicinae/scripts
