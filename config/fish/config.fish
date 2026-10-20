@@ -1,5 +1,7 @@
 set -gxp PATH $HOME/.local/bin
 set -gx EDITOR nvim
+set -g fish_greeting
+fish_add_path -g $HOME/.opencode/bin $HOME/.fzf/bin
 
 # Sensitive functions which are not pushed to Github
 # It contains work related stuff, some functions, aliases etc...
