@@ -129,3 +129,10 @@
 
 [url "https://gitlab.devops.telekom.de/gsus-rem"]
 	insteadOf = git@gitlab.devops.telekom.de:gsus-rem
+[credential "https://dev.azure.com"]
+	helper = /usr/libexec/git-core/git-credential-libsecret
+[credential "https://gitlab.devops.telekom.de"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+[core]
+	hooksPath = /home/lucas/.config/git/hooks
